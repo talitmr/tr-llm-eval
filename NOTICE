@@ -1,0 +1,39 @@
+tr-llm-eval
+Copyright 2026 tr-llm-eval katkıcıları
+
+Bu proje Apache License 2.0 ile lisanslanmıştır (bkz. LICENSE).
+
+----------------------------------------------------------------------
+Üçüncü taraf bileşenler
+----------------------------------------------------------------------
+
+zemberek-nlp
+  https://github.com/ahmetaa/zemberek-nlp
+  Copyright 2018 Ahmet A. Akın, Mehmet D. Akın
+  Apache License 2.0
+
+  Bu repodaki language_id.py, named_entities.py, turkish_utils.py ve
+  text_quality.py dosyaları zemberek-nlp'nin Java kaynak kodunun Python'a
+  çevrilmiş halleridir (lang-id, ner, core/turkish/hyphenation,
+  core/text/distance, morphology/analysis/tr/TurkishNumbers,
+  TurkishTextToNumberConverter, core/text/TextUtil, normalization/TextCleaner
+  ve experiment/normalization/NormalizationScripts). Çeviri sırasında
+  değişiklikler yapılmıştır.
+
+  langid_models/ klasöründeki dil modeli dosyaları (*.clm, langs.txt)
+  zemberek-nlp'den (lang-id/src/main/resources/models) değiştirilmeden
+  kopyalanmıştır.
+
+zemberek-python
+  https://github.com/Loodos/zemberek-python
+  Apache License 2.0
+  Morfoloji, belirsizlik giderme, tokenizasyon, normalizasyon ve dil modeli
+  için bağımlılık olarak kullanılır (pip ile kurulur, bu repoda yer almaz).
+
+WikiANN (Pan et al., 2017)
+  https://huggingface.co/datasets/unimelb-nlp/wikiann
+  ner_model/ klasöründeki NER modeli WikiANN'in Türkçe eğitim bölümüyle
+  eğitilmiştir. WikiANN, Wikipedia içeriğinden otomatik olarak üretilmiştir.
+  Xiaoman Pan, Boliang Zhang, Jonathan May, Joel Nothman, Kevin Knight,
+  Heng Ji. "Cross-lingual Name Tagging and Linking for 282 Languages."
+  ACL 2017.
