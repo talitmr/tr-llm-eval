@@ -29,6 +29,12 @@ zemberek-python
   Apache License 2.0
   Morfoloji, belirsizlik giderme, tokenizasyon, normalizasyon ve dil modeli
   için bağımlılık olarak kullanılır (pip ile kurulur, bu repoda yer almaz).
+  zemberek_compat.py, NumPy 2 uyumluluğu için zemberek-python'daki
+  Mphf.rshift, GramDataArray.rshift ve GramDataArray.__init__
+  davranışını, determinizm için de RootLexicon.__iter__,
+  StemTransitionsMapBased.get_transitions_ascii_tolerant ve
+  TurkishSpellChecker.get_unranked_suggestions davranışını çalışma
+  zamanında değiştirir.
 
 WikiANN (Pan et al., 2017)
   https://huggingface.co/datasets/unimelb-nlp/wikiann

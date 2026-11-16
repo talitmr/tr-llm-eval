@@ -38,6 +38,7 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
 
+import zemberek_compat  # noqa: F401  (NumPy 2 uyumluluğu, zemberek'ten önce import edilmeli)
 from zemberek import TurkishMorphology, TurkishSentenceExtractor
 from zemberek.core.turkish import PrimaryPos, SecondaryPos, TurkishAlphabet
 from zemberek.normalization.deasciifier.deasciifier import Deasciifier

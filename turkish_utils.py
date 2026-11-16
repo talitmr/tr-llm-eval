@@ -16,6 +16,7 @@ import re
 from enum import Enum, auto
 from typing import Dict, Iterable, List, Optional, Sequence
 
+import zemberek_compat  # noqa: F401  (NumPy 2 uyumluluğu, zemberek'ten önce import edilmeli)
 from zemberek.core.turkish import PrimaryPos, TurkishAlphabet
 
 try:

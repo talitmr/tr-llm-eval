@@ -25,6 +25,7 @@ import sys
 from dataclasses import asdict, dataclass, field
 from typing import Dict, List, Optional, Sequence
 
+import zemberek_compat  # noqa: F401  (NumPy 2 uyumluluğu, zemberek'ten önce import edilmeli)
 from zemberek import TurkishMorphology, TurkishSentenceExtractor, TurkishSentenceNormalizer, TurkishTokenizer
 from zemberek.core.turkish import TurkishAlphabet
 from zemberek.normalization.deasciifier.deasciifier import Deasciifier

@@ -41,6 +41,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
+import zemberek_compat  # noqa: F401  (NumPy 2 uyumluluğu, zemberek'ten önce import edilmeli)
 from zemberek import TurkishMorphology, TurkishTokenizer
 from zemberek.core.text.text_util import TextUtil
 from zemberek.core.turkish import SecondaryPos, TurkishAlphabet
@@ -494,7 +495,7 @@ class PerceptronNer:
     def load_model(model_root: str, morphology: TurkishMorphology) -> "PerceptronNer":
         """Java veya bu modülle eğitilmiş (text ya da compressed) modeli yükler."""
         model: Dict[str, ClassModel] = {}
-        for fn in os.listdir(model_root):
+        for fn in sorted(os.listdir(model_root)):  # listdir sırası dosya sistemine bağlı
             if not fn.endswith(".ner.model"):
                 continue
             id_ = fn[: -len(".ner.model")]
@@ -585,8 +586,11 @@ class PerceptronNerTrainer:
 
     def train(self, training_set: NerDataSet, dev_set: Optional[NerDataSet] = None,
               iteration_count: int = 7, learning_rate: float = 0.1, verbose: bool = True) -> PerceptronNer:
-        model = {t: ClassModel(t) for t in training_set.type_ids}
-        averages = {t: ClassModel(t) for t in training_set.type_ids}
+        # type_ids bir set: sıralamazsak sınıf sırası (ve eşit skorda seçilen sınıf) PYTHONHASHSEED'e
+        # bağlı olur, eğitim her çalıştırmada farklı model üretir.
+        type_ids = sorted(training_set.type_ids)
+        model = {t: ClassModel(t) for t in type_ids}
+        averages = {t: ClassModel(t) for t in type_ids}
         counts: Dict[str, int] = defaultdict(int)
         fx = _FeatureExtractor(self.morphology)
 

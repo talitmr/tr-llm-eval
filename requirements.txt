@@ -1,5 +1,5 @@
 zemberek-python==0.2.3
-numpy<2
+numpy>=1.19
 antlr4-python3-runtime==4.8
 # yalnızca train_ner_wikiann.py için:
 pyarrow

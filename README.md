@@ -16,7 +16,7 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-`numpy<2` zorunludur, çünkü morfoloji bağımlılığı NumPy 2 ile normalizasyon adımında çöküyor. Python 3.9 ile test edildi.
+NumPy 1.x ve 2.x ile çalışır. zemberek-python 0.2.3 NumPy 2 ile dil modeli adımında (normalizasyon, yazım önerileri) çöküyor. `zemberek_compat.py` bu hatayı düzeltir ve zemberek kullanan modüller onu otomatik olarak import eder. Aynı modül, zemberek'in `set` sırasına bağlı (her çalıştırmada `PYTHONHASHSEED` ile değişen) çıktılarını da sabitler: morfolojik çözümleme sırası ve yazım önerisi sırası. Böylece sonuçlar çalıştırmadan çalıştırmaya değişmez. Kendi kodunuzda zemberek'i doğrudan kullanıyorsanız önce `import zemberek_compat` satırını ekleyin. Python 3.9 ile, NumPy 1.26 ve 2.0 sürümleriyle test edildi.
 
 ## Hızlı başlangıç
 
@@ -305,6 +305,7 @@ ev = TurkishLLMEvaluator(ner_model_dir="benim_ner_modelim")   # değerlendiricid
 | `language_id.py` | Dil tespiti (60 dil ya da Türkçe odaklı 8 dil) |
 | `named_entities.py` | Perceptron NER (eğitim, tahmin, değerlendirme) ve modelsiz özel isim çıkarıcı |
 | `turkish_utils.py` | Heceleme, yazıyla sayıyı rakama çevirme, sıra sayıları, Levenshtein, `get_lemmas` / `get_pos` |
+| `zemberek_compat.py` | zemberek-python için NumPy 2 uyumluluk ve determinizm yamaları (otomatik import edilir) |
 | `train_ner_wikiann.py` | WikiANN-tr ile NER modelini yeniden eğitir |
 | `examples.py` | Cümle ayırma, tokenizasyon, morfolojik analiz, normalizasyon ve yazım denetimi örnekleri |
 | `langid_models/` | Dil tespiti model dosyaları |
