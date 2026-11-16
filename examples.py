@@ -2,6 +2,7 @@
 import logging
 import time
 
+import zemberek_compat  # noqa: F401  (NumPy 2 uyumluluğu, zemberek'ten önce import edilmeli)
 from zemberek import (
     TurkishMorphology,
     TurkishSentenceExtractor,
